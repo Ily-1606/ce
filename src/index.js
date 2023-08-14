@@ -968,7 +968,7 @@ if (! formula && typeof(require) === 'function') {
          * @param bool get highlighted cells only
          * @return array data
          */
-        obj.getData = function(highlighted, dataOnly) {
+        obj.getData = function(highlighted, dataOnly, onlyVisible = true) {
             // Control vars
             var dataset = [];
             var px = 0;
@@ -992,7 +992,7 @@ if (! formula && typeof(require) === 'function') {
                             dataset[py] = [];
                         }
                         if (! dataType) {
-                            dataset[py][px] = obj.records[j][i].innerHTML;
+                            dataset[py][px] = obj.records[j][i][onlyVisible ? innerText : textContent];
                         } else {
                             dataset[py][px] = obj.options.data[j][i];
                         }
